@@ -36,10 +36,6 @@
 	     Recombine Surface{6};*/
 
 
-
-
-
-
 	// extrude base surface in z direction for create 
 
 
@@ -48,12 +44,10 @@
 	   Surface{1}; Layers{1}; Recombine;
 	}
 
-	/*Physical Surface("intlet") = {58};
-	Physical Surface("topWall") = {30, 34, 38};
-	Physical Surface("lowerWall") = {54, 50, 46};
-	Physical Surface("outlet") = {42};
-	Physical Surface("frontAndBack") = {70, 66, 74, 62}
-        
-        Physical Volume(7) = {1};
-       // Physical Surface("frontAndBack") += {1, 75};*/
-
+        // Physical Surface
+	Physical Surface("inlet") = {45};
+	Physical Surface("outlet") = {33};
+	Physical Surface("leftWall") = {29, 25, 21, 49};
+	Physical Surface("rightWall") = {37, 41};
+	Physical Surface("frontAndback") = {50, 1};
+	Physical Volume("body") = {1};

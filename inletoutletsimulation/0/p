@@ -20,31 +20,25 @@ internalField   uniform 0;
 
 boundaryField
 {
-    intlet
+    inlet
     {
         type            zeroGradient;
     }
-   
-   outlet
+
+    outlet
     {
         type            fixedValue;
         value           uniform 0;
     }
 
-   topWall
+    leftWall
     {
         type            zeroGradient;
     }
 
-   lowerWall
+    rightWall
     {
         type            zeroGradient;
-    }
-
- internalpatch
-    {
-        type            zeroGradient;
-        
     }
 
     frontAndBack

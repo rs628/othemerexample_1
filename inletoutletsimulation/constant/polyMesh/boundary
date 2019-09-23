@@ -1,7 +1,7 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v1812                                 |
+|  \\    /   O peration     | Version:  v1906                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -15,49 +15,42 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-6
+5
 (
-    frontAndBack
+    frontAndback
     {
-        type            patch;
-        physicalType    patch;
-        nFaces          500;
-        startFace       354;
+        type            empty;
+        physicalType    empty;
+        nFaces          416;
+        startFace       295;
     }
-    topWall
+    leftWall
     {
         type            patch;
         physicalType    patch;
-        nFaces          15;
-        startFace       854;
+        nFaces          22;
+        startFace       711;
     }
     outlet
     {
         type            patch;
         physicalType    patch;
-        nFaces          2;
-        startFace       869;
+        nFaces          3;
+        startFace       733;
     }
-    lowerWall
+    rightWall
     {
         type            patch;
         physicalType    patch;
-        nFaces          15;
-        startFace       871;
+        nFaces          6;
+        startFace       736;
     }
-    intlet
+    inlet
     {
         type            patch;
         physicalType    patch;
-        nFaces          2;
-        startFace       886;
-    }
-    internalpatch
-    {
-        type            patch;
-        physicalType    patch;
-        nFaces          8;
-        startFace       888;
+        nFaces          3;
+        startFace       742;
     }
 )
 
