@@ -17,41 +17,40 @@ FoamFile
 
 5
 (
-    frontAndback
+    frontAndBack
     {
         type            empty;
         physicalType    empty;
-        nFaces          416;
-        startFace       295;
+        nFaces          48888;
+        startFace       36474;
     }
     leftWall
     {
-        type            wall;            
-        inGroups        1(wall);
-        
-        nFaces          22;
-        startFace       711;
+        type            wall;
+        physicalType    wall;
+        nFaces          256;
+        startFace       85362;
     }
     outlet
     {
         type            patch;
         physicalType    patch;
-        nFaces          3;
-        startFace       733;
+        nFaces          32;
+        startFace       85618;
     }
     rightWall
     {
-        type           wall;
-        inGroups        1(wall);
-        nFaces          6;
-        startFace       736;
+        type            wall;
+        physicalType    wall;
+        nFaces          64;
+        startFace       85650;
     }
     inlet
     {
         type            patch;
         physicalType    patch;
-        nFaces          3;
-        startFace       742;
+        nFaces          32;
+        startFace       85714;
     }
 )
 
