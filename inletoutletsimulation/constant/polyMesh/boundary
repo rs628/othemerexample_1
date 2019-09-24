@@ -26,8 +26,9 @@ FoamFile
     }
     leftWall
     {
-        type            patch;
-        physicalType    patch;
+        type            wall;            
+        inGroups        1(wall);
+        
         nFaces          22;
         startFace       711;
     }
@@ -40,8 +41,8 @@ FoamFile
     }
     rightWall
     {
-        type            patch;
-        physicalType    patch;
+        type           wall;
+        inGroups        1(wall);
         nFaces          6;
         startFace       736;
     }

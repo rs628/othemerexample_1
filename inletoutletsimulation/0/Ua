@@ -23,24 +23,22 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform (-1 0 0);
+        value           uniform (-8 0 0);
     }
 
     outlet
     {
-        //type            zeroGradient;
-        //type            inletOutlet;
-        //inletValue      uniform (0 0 0);
-        type            adjointOutletVelocity;
-        value           uniform (0 0 0);
+       // type            zeroGradient;
+        type            inletOutlet;
+        inletValue      uniform (0 0 0);
     }
 
-    upperWall
+    leftWall
     {
         type            noSlip;
     }
 
-    lowerWall
+    rightWall
     {
         type            noSlip;
     }
@@ -50,5 +48,6 @@ boundaryField
         type            empty;
     }
 }
+
 
 // ************************************************************************* //

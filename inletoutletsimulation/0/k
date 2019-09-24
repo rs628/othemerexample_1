@@ -30,12 +30,12 @@ boundaryField
     {
         type            zeroGradient;
     }
-    upperWall
+    leftWall
     {
-        type            kqRWallFunction;
+        type           kqRWallFunction;
         value           uniform 0.375;
     }
-    lowerWall
+    rightWall
     {
         type            kqRWallFunction;
         value           uniform 0.375;

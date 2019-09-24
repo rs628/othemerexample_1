@@ -30,15 +30,15 @@ boundaryField
     {
         type            zeroGradient;
     }
-    upperWall
+    leftWall
     {
-        type            epsilonWallFunction;
+        type           epsilonWallFunction;
         Cmu             0.09;
         kappa           0.41;
         E               9.8;
         value           uniform 14.855;
     }
-    lowerWall
+    rightWall
     {
         type            epsilonWallFunction;
         Cmu             0.09;

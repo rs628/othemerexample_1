@@ -27,16 +27,16 @@ boundaryField
 
     outlet
     {
-        type            adjointOutletPressure;
+          type          adjointOutletPressure;
         value           uniform 0;
     }
 
-    upperWall
+    leftWall
     {
         type            zeroGradient;
     }
 
-    lowerWall
+    rightWall
     {
         type            zeroGradient;
     }
