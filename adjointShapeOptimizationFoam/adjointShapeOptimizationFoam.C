@@ -95,11 +95,28 @@ int main(int argc, char *argv[])
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nStarting time loop\n" << endl;
+	
 
-    while (simple.loop())
-    {
+       // Cost function value
+	    scalar J = 0;
+	    scalar Jold = 0;
+	    scalar Jk = 0;
+	
+	// Compute cost function value
+	#include "costFunctionValue.H"
+
+	    std::ofstream file("cost.csv");
+	    file << 0 << "," << J << "," << 0 << nl;
+
+	    std::ofstream errorFile("Jerror.csv");
+    
+
+
+       while (simple.loop()&& fabs(J - Jold) > tol)
+        {
         Info<< "Time = " << runTime.timeName() << nl << endl;
-
+          // save old cost value
+		Jold = J;
         //alpha +=
         //    mesh.relaxationFactor("alpha")
         //   *(lambda*max(Ua & U, zeroSensitivity) - alpha);
@@ -225,7 +242,7 @@ int main(int argc, char *argv[])
                 {
                     phia = phiHbyAa - paEqn.flux();
                 }
-            }
+              }
 
             #include "adjointContinuityErrs.H"
 
@@ -238,18 +255,44 @@ int main(int argc, char *argv[])
             fvOptions.correct(Ua);
         }
 
-        laminarTransport.correct();
+    laminarTransport.correct();
         turbulence->correct();
 
         runTime.write();
 
         runTime.printExecutionTime(Info);
+    #include "costFunctionValue.H"
+          Jk = J;
+
+        Info << J<<endl; 
+        
+
+        Info << "Iteration no. " << runTime.timeName() << " - "
+             << "Cost value " << J
+             << " - "
+             << "Cost variation" << fabs(J - Jold) << endl;
+
+        file << runTime.value() << "," << J << nl;
     }
 
-    Info<< "End\n" << endl;
+   
+          file.close();   
+        
 
+
+    Info << nl << endl;
+    Info << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
+        << "  ClockTime = " << runTime.elapsedClockTime() << " s"
+         << nl << endl;
+
+    Info << "\nEnd\n"
+        << endl;
+   
+           
     return 0;
-}
+ }
+
+
 
 
 // ************************************************************************* //

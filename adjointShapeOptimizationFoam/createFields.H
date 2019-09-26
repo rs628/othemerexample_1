@@ -1,3 +1,37 @@
+Info << "Reading physicalProperties\n" << endl;
+IOdictionary physicalProperties
+(
+    IOobject
+    (
+	"physicalProperties",
+	runTime.constant(),
+	mesh,
+	IOobject::MUST_READ,
+	IOobject::NO_WRITE
+    )
+);
+
+wordList patchesToIntegrate(physicalProperties.lookup("boundaryPatchList"));
+
+Info << "Reading numericalParameters\n" << endl;
+IOdictionary numericalParameters
+(
+    IOobject
+    (
+	"numericalParameters",
+	runTime.constant(),
+	mesh,
+	IOobject::MUST_READ,
+	IOobject::NO_WRITE
+    )
+);
+
+scalar tol(numericalParameters.lookupOrDefault<scalar>("tol", 1e-8));
+//scalar alpha1(numericalParameters.lookupOrDefault<scalar>("alpha1", 1));
+//scalar c1(numericalParameters.lookupOrDefault<scalar>("c1", 1e-4));
+//scalar c2(numericalParameters.lookupOrDefault<scalar>("c2", 0.8));
+
+
 Info<< "Reading field p\n" << endl;
 volScalarField p
 (
@@ -119,6 +153,8 @@ volScalarField alpha
     lambda*max(Ua & U, zeroSensitivity)
 );
 zeroCells(alpha, inletCells);
+
+
 //zeroCells(alpha, outletCells);
 
 #include "createFvOptions.H"
