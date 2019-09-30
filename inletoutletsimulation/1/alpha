@@ -44,7 +44,7 @@ boundaryField
     inlet
     {
         type            calculated;
-        value           uniform 5760020;
+        value           uniform 56250000;
     }
 }
 

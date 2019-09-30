@@ -35,15 +35,20 @@
 	
 	// extra work for creating structured mesh
 
-	   Transfinite Line{1, 9} = 33;
-	   Transfinite Line{2, 8} = 33;
-           Transfinite Line{3, 7} = 33;
-	   Transfinite Line{4, 6} = 33;
-	   Transfinite Line{5, 12} = 33;
-	   Transfinite Line{6, 11} = 33;  
-	   Transfinite Line{7, 10} = 33;
-	   Transfinite Surface{6};
-	     Recombine Surface{6};
+	  // Transfinite Line{1, 9} = 33;
+      //   Transfinite Line{2, 8} = 33;
+           //Transfinite Line{3, 7} = 33;
+	   //Transfinite Line{4, 6} = 33;
+	  // Transfinite Line{5, 12} = 33;
+	  // Transfinite Line{6, 11} = 33;  
+	  // Transfinite Line{7, 10} = 33;
+        
+         
+
+           Transfinite Curve{1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12} = 33;
+
+	   Transfinite Surface{1}= {1,10,7,4} ;
+	     Recombine Surface{1};
 
 
 	// extrude base surface in z direction for create 

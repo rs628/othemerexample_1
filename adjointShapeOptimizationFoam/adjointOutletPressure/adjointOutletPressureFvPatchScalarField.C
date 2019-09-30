@@ -28,7 +28,7 @@ License
 #include "fvPatchMapper.H"
 #include "volFields.H"
 #include "surfaceFields.H"
-
+#include "RASModel.H"
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 Foam::adjointOutletPressureFvPatchScalarField::
@@ -87,19 +87,40 @@ void Foam::adjointOutletPressureFvPatchScalarField::updateCoeffs()
         return;
     }
 
-    const fvsPatchField<scalar>& phip =
-        patch().lookupPatchField<surfaceScalarField, scalar>("phi");
-
-    const fvsPatchField<scalar>& phiap =
-        patch().lookupPatchField<surfaceScalarField, scalar>("phia");
-
+  
     const fvPatchField<vector>& Up =
         patch().lookupPatchField<volVectorField, vector>("U");
 
     const fvPatchField<vector>& Uap =
         patch().lookupPatchField<volVectorField, vector>("Ua");
 
-    operator==((phiap/patch().magSf() - 1.0)*phip/patch().magSf() + (Up & Uap));
+
+//...................................................................................................................................
+  scalarField Up_n = Up & patch().nf(); // primal normal
+   
+ scalarField Uap_n = Uap & patch().nf(); // normal
+
+   
+  const incompressible::RASModel& rasModel =
+            db().lookupObject<incompressible::RASModel>("RASProperties");
+   
+
+ scalarField nueff =rasModel.nuEff()().boundaryField()[patch().index()];
+ const scalarField & deltainv = patch().deltaCoeffs();// distance^ (-1)
+  scalarField Uaneigh_n = Uap.patchInternalField() & patch().nf();             
+
+//.........................................................................................................................
+
+   // operator==((phiap/patch().magSf() - 1.0)*phip/patch().magSf() + (Up & Uap)); // shows q = (un − 1)vn +  U.V   
+                                                                  //where  patch().magSf()=magnitude of the face area vector of the patch
+
+
+
+
+scalarField::operator= ( (Uap & Up) + (Up_n*Uap_n)
+    + nueff*deltainv*(Uap_n - Uaneigh_n)
+    - 0.5*mag(Up)*mag(Up)   - (Up & patch().Sf()/patch().magSf())*(Up & patch().Sf()/patch().magSf()));  //??
+
 
     fixedValueFvPatchScalarField::updateCoeffs();
 }

@@ -21,36 +21,36 @@ FoamFile
     {
         type            empty;
         physicalType    empty;
-        nFaces          48888;
-        startFace       36474;
+        nFaces          18432;
+        startFace       18240;
     }
     leftWall
     {
         type            wall;
         physicalType    wall;
         nFaces          256;
-        startFace       85362;
+        startFace       36672;
     }
     outlet
     {
         type            patch;
         physicalType    patch;
         nFaces          32;
-        startFace       85618;
+        startFace       36928;
     }
     rightWall
     {
         type            wall;
         physicalType    wall;
         nFaces          64;
-        startFace       85650;
+        startFace       36960;
     }
     inlet
     {
         type            patch;
         physicalType    patch;
         nFaces          32;
-        startFace       85714;
+        startFace       37024;
     }
 )
 
