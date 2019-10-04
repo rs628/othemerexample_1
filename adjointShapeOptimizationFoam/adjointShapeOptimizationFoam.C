@@ -134,8 +134,8 @@ int main(int argc, char *argv[])
 
 alpha +=
             mesh.fieldRelaxationFactor("alpha")
-           *(min(max(alpha - lambda*(Ua & U), zeroAlpha), alphaMax) - alpha);
-
+           *(min(max(alpha - lambda*(Ua & U), zeroAlpha), alphaMax) - alpha);   // - sign
+                         //+//changed according to nillson paper
         zeroCells(alpha, inletCells);
         //zeroCells(alpha, outletCells);
 

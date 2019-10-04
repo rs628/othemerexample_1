@@ -1,6 +1,6 @@
-$(OBJECTS_DIR)/adjointOutletPressure/adjointOutletPressureFvPatchScalarField.C.dep: \
-adjointOutletPressure/adjointOutletPressureFvPatchScalarField.C \
-adjointOutletPressure/adjointOutletPressureFvPatchScalarField.H \
+$(OBJECTS_DIR)/adjointOutletVelocity/adjointOutletVelocityFvPatchVectorField.C.dep: \
+adjointOutletVelocity/adjointOutletVelocityFvPatchVectorField.C \
+adjointOutletVelocity/adjointOutletVelocityFvPatchVectorField.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fixedValueFvPatchFields.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fixedValueFvPatchField.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvPatchField.H \
@@ -458,10 +458,6 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvPatchFieldNew.C \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/calculatedFvPatchField.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/calculatedFvPatchField.C \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fixedValueFvPatchField.C \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/addToRunTimeSelectionTable.H \
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvPatchMapper.H \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/faceMapper.H \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/morphFieldMapper.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/volFields.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/GeometricFields.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/GeometricScalarField.H \
@@ -562,6 +558,7 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/sphericalTensorFieldField.C \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/tensorFieldField.C \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/calculatedFvPatchFields.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/volFieldsI.H \
+$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/addToRunTimeSelectionTable.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceFields.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceMesh.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvsPatchFields.H \
@@ -572,18 +569,5 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/calculatedFvsPatchField.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/calculatedFvsPatchField.C \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvsPatchFieldsFwd.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/calculatedFvsPatchFields.H \
-$(WM_PROJECT_DIR)/src/TurbulenceModels/turbulenceModels/lnInclude/RASModel.H \
-$(WM_PROJECT_DIR)/src/TurbulenceModels/turbulenceModels/lnInclude/TurbulenceModel.H \
-$(WM_PROJECT_DIR)/src/TurbulenceModels/turbulenceModels/lnInclude/turbulenceModel.H \
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvMatricesFwd.H \
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/nearWallDist.H \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/geometricOneField.H \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/oneFieldField.H \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/oneField.H \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/oneFieldI.H \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/oneFieldFieldI.H \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/geometricOneFieldI.H \
-$(WM_PROJECT_DIR)/src/TurbulenceModels/turbulenceModels/lnInclude/TurbulenceModel.C \
-$(WM_PROJECT_DIR)/src/TurbulenceModels/turbulenceModels/lnInclude/RASModel.C \
 
 

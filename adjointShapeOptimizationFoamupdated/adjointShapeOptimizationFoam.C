@@ -43,7 +43,7 @@ Description
         http://pdf.aiaa.org/preview/CDReadyMCFD07_1379/PV2007_3947.pdf
     \endverbatim
 
-    Note that this solver optimises for total pressure loss whereas the
+    Note that this solver optimises for total pressure loss whereas
     above paper describes the method for optimising power-loss.
 
 \*---------------------------------------------------------------------------*/
@@ -133,9 +133,13 @@ int main(int argc, char *argv[])
 
 
 alpha +=
-            mesh.fieldRelaxationFactor("alpha")
-           *(min(max(alpha +
-   lambda*(Ua & U), zeroAlpha), alphaMax) - alpha);
+            mesh.fieldRelaxationFactor("alpha") 
+                      
+           *(min(max(alpha - lambda*(Ua & U), zeroAlpha), alphaMax) - alpha);
+
+          //change + to -
+  //αn+1 = αn (1 − γ) + γmin (max ((αn − ui · vi Vi δ) , 0) , α max ) 
+
 
         zeroCells(alpha, inletCells);
         //zeroCells(alpha, outletCells);
