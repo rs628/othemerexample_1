@@ -82,7 +82,7 @@ adjointOutletVelocityFvPatchVectorField
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
 // Update the coefficients associated with the patch field
-void Foam::adjointOutletVelocityPowerFvPatchVectorField::updateCoeffs()
+void Foam::adjointOutletVelocityFvPatchVectorField::updateCoeffs()
 {
     if (updated())
     {
@@ -110,7 +110,7 @@ void Foam::adjointOutletVelocityPowerFvPatchVectorField::updateCoeffs()
     scalarField nueff = turb.nuEff()().boundaryField()[patch().index()];
 
 
-    scalarField nueff = turb.nuEff()().boundaryField()[patch().index()];
+    
     const scalarField & deltainv = patch().deltaCoeffs();
 
 
@@ -138,7 +138,7 @@ void Foam::adjointOutletVelocityPowerFvPatchVectorField::updateCoeffs()
     vectorField Uap_n = (phiap * patch().Sf())/(patch().magSf()*patch().magSf());
 
     
-    vectorField::operator= (Uap_t + Uap_n);
+    vectorField::operator== (Uap_t + Uap_n);
     
     //vectorField::operator=(Uan + UtHat);
 
