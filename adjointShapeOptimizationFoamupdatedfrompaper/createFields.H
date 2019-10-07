@@ -26,7 +26,7 @@ IOdictionary numericalParameters
     )
 );
 
-scalar tol(numericalParameters.lookupOrDefault<scalar>("tol", 1e-8));
+ scalar tol(numericalParameters.lookupOrDefault<scalar>("tol", 1e-8));
 //scalar alpha1(numericalParameters.lookupOrDefault<scalar>("alpha1", 1));
 //scalar c1(numericalParameters.lookupOrDefault<scalar>("c1", 1e-4));
 //scalar c2(numericalParameters.lookupOrDefault<scalar>("c2", 0.8));

@@ -96,27 +96,19 @@ int main(int argc, char *argv[])
 
     Info<< "\nStarting time loop\n" << endl;
 	
-
        // Cost function value
 	    scalar J = 0;
 	    scalar Jold = 1000;
-	    scalar Jk = 0;
+	   // scalar Jk = 0;
 	
-
-
-
 	// Compute cost function value
 	#include "costFunctionValue.H"
 
+	    std::ofstream costfile("cost.csv");
+	   // costfile << 0 << "," << J << "," << 0 << nl;
 
-
-	    std::ofstream file("cost.csv");
-	    file << 0 << "," << J << "," << 0 << nl;
-
-	    std::ofstream errorFile("Jerror.csv");
-           file << 0 << "," << J << "," << 0 << nl;
-
-
+	    std::ofstream errorfile("costvariation.csv");
+           //errorfile << 0 << "," << fabs(J - Jold) << "," << 0 << nl;
 
        while (simple.loop()&& (fabs(J - Jold) > tol))
         {
@@ -126,19 +118,13 @@ int main(int argc, char *argv[])
         //alpha +=
         //    mesh.relaxationFactor("alpha")
         //   *(lambda*max(Ua & U, zeroSensitivity) - alpha);
-        
-
-//the porosity field is updated using a steepest descent algorithm.
+   //the porosity field is updated using a steepest descent algorithm.
 //“lambda=cell volume times the step length"-defined in createFields.H
+             alpha +=mesh.fieldRelaxationFactor("alpha") 
+                       *(min(max(alpha - lambda*(Ua & U), zeroAlpha), alphaMax) - alpha);
 
-
-alpha +=
-            mesh.fieldRelaxationFactor("alpha") 
-                      
-           *(min(max(alpha - lambda*(Ua & U), zeroAlpha), alphaMax) - alpha);
-
-          //change + to -
-  //αn+1 = αn (1 − γ) + γmin (max ((αn − ui · vi Vi δ) , 0) , α max ) 
+                 //change + to -
+              //αn+1 = αn (1 − γ) + γmin (max ((αn − ui · vi Vi δ) , 0) , α max ) 
 
 
         zeroCells(alpha, inletCells); //porosity at the inlet cells are put to zero
@@ -280,7 +266,7 @@ alpha +=
 
         runTime.printExecutionTime(Info);
     #include "costFunctionValue.H"
-          Jk = J;
+         // Jk = J;
 
         Info << runTime.value() <<  ".......J....." <<  J<<endl; 
         
@@ -289,9 +275,12 @@ alpha +=
              << "Cost value " << J
              << " - "
              << "Cost variation" << fabs(J - Jold) << endl;
-
-        file << runTime.value() << "J"<<"," << J << nl;
-         file.close(); 
+         costfile.open("cost.csv",std::ios::app);
+       costfile << runTime.value() << "J"<<"," << J << nl;
+         costfile.close(); 
+        errorfile.open("costvarition.csv",std::ios::app);
+        errorfile << runTime.value() << "fabs(J - Jold)"<<"," << fabs(J - Jold) << nl;
+        errorfile.close(); 
     }
 
    
