@@ -104,11 +104,11 @@ int main(int argc, char *argv[])
 	// Compute cost function value
 	#include "costFunctionValue.H"
 
-	    std::ofstream costfile("cost.csv");
-	    costfile << 0 << "," << J << "," << 0 << nl;
+	      std::ofstream costfile("cost.csv");
+	   // costfile << 0 << "," << J << "," << 0 << nl;
 
 	    std::ofstream errorfile("costvariation.csv");
-           errorfile << 0 << "," << fabs(J - Jold) << "," << 0 << nl;
+          // errorfile << 0 << "," << fabs(J - Jold) << "," << 0 << nl;
 
        while (simple.loop()&& (fabs(J - Jold) > tol))
         {
@@ -278,7 +278,7 @@ int main(int argc, char *argv[])
          costfile.open("cost.csv",std::ios::app);
        costfile << runTime.value() << "," << J << nl;
          costfile.close(); 
-        errorfile.open("costvarition.csv",std::ios::app);
+        errorfile.open("costvariation.csv",std::ios::app);
         errorfile << runTime.value() <<"," << fabs(J - Jold) << nl;
         errorfile.close(); 
     }
